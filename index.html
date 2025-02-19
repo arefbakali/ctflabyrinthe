@@ -3,22 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CTF du Cercle Parfait</title>
+    <title>CTF du Cercle Impossible</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
 <body oncontextmenu="return false" onkeydown="return false;">
 
-    <h1>Bienvenue dans le Vide Infini 🌀</h1>
-    <p>Tout est normal ici... jusqu'à ce que ça ne le soit plus.</p>
+    <h1>Bienvenue dans la Folie Totale 🌀</h1>
+    <p>Il y a un secret ici... mais seul un maître du mouvement peut le trouver.</p>
 
-    <!-- Faux flag pour tromper -->
-    <p id="fakeFlag">Flag : ITLABCTF{wrong_circular}</p>
+    <!-- Faux flag pour piéger les tricheurs -->
+    <p id="fakeFlag">Flag : ITLABCTF{wrong_flag_123}</p>
 
     <!-- Le vrai flag n'apparaît que si la condition est remplie -->
-    <p id="realFlag">ITLABCTF{flawless_circle}</p>
+    <p id="realFlag">ITLABCTF{insane_perfect_circle}</p>
 
-    <p class="hiddenMessage">Pourquoi ne pas essayer un mouvement circulaire avec ta souris ?</p>
+    <!-- Compteur d'échecs -->
+    <p id="failCount">Échecs : 0</p>
+
+    <!-- Message de troll -->
+    <p id="trollMessage"></p>
 
 </body>
 </html>
