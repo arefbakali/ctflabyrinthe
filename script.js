@@ -22,15 +22,15 @@ let perfectCircles = 0;
 
 // 🔥 Détection des mouvements de souris en cercle
 document.addEventListener("mousemove", function(event) {
-    if (!startTime) startTime = Date.now(); // Démarre le timer au premier mouvement
+    if (!startTime) startTime = Date.now();
 
     movementHistory.push({x: event.clientX, y: event.clientY});
 
-    if (movementHistory.length > 100) { // On garde 100 points pour une analyse fine
+    if (movementHistory.length > 100) { 
         movementHistory.shift();
     }
 
-    if (movementHistory.length === 100) { // Analyse quand 100 points sont enregistrés
+    if (movementHistory.length === 100) { 
         let centerX = movementHistory.reduce((sum, p) => sum + p.x, 0) / movementHistory.length;
         let centerY = movementHistory.reduce((sum, p) => sum + p.y, 0) / movementHistory.length;
         
@@ -42,7 +42,7 @@ document.addEventListener("mousemove", function(event) {
         
         let duration = (Date.now() - startTime) / 1000; // Temps en secondes
 
-        if (avgDeviation < (1 - precision) && duration > 5) { // Exige un cercle **très précis** et **lent**
+        if (avgDeviation < (1 - precision) && duration > 5) { 
             showFlag();
         } else {
             handleFailure();
@@ -103,7 +103,7 @@ function handleFailure() {
         document.getElementById("trollMessage").innerText = "Tu aimes échouer, non ?";
     }
 
-    alert("Échec ! Le cercle n'était pas parfait, essaie encore...");
+    alert("FI9 Ye Chafi9 HAHAHAHA...");
     movementHistory = [];
     numpadSequence = [];
     startTime = null;
