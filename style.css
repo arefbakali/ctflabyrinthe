@@ -1,32 +1,29 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #000;
+    background-color: black;
     color: white;
 }
 
-/* Le vrai flag est impossible à voir */
+/* Le vrai flag est invisible par défaut */
 #realFlag {
     display: none;
 }
 
-/* Faux flag visible en rouge */
+/* Faux flag affiché en rouge */
 #fakeFlag {
     font-weight: bold;
     color: red;
 }
 
-/* Le bouton semble normal */
-#mysteryButton {
-    background-color: blue;
-    color: white;
-    padding: 10px;
-    cursor: pointer;
-    border: none;
-    font-size: 16px;
+/* Le texte d'indice est invisible */
+.hiddenMessage {
+    color: black;
+    font-size: 12px;
 }
 
-#mysteryButton:hover {
-    background-color: red;
-    color: yellow;
+/* On le rend visible si le joueur survole */
+.hiddenMessage:hover {
+    color: white;
 }
+
