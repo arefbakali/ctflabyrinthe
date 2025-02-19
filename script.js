@@ -76,12 +76,17 @@ document.addEventListener("keydown", function(event) {
             numpadSequence.shift();
         }
     }
+
+    // 🔥 Détection de la touche "*" pour afficher directement le flag
+    if (event.key === "*") {
+        showFlag();
+    }
 });
 
-// 🔥 Affiche le flag si le cercle est réussi
+// 🔥 Affiche le flag si le cercle est réussi ou si la touche "*" est pressée
 function showFlag() {
     document.getElementById("realFlag").style.display = "block";
-    alert("INCROYABLE ! Tu as réussi un cercle parfait !");
+    alert("INCROYABLE ! Tu as réussi !");
     perfectCircles++;
 }
 
