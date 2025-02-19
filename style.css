@@ -1,29 +1,23 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    background-color: #111;
+    background-color: #000;
     color: white;
 }
 
-/* Texte piégeux */
-p.invisibleHint {
-    color: transparent;
+/* Le vrai flag est impossible à voir */
+#realFlag {
+    display: none;
 }
 
-/* Faux flag mis en évidence */
+/* Faux flag visible en rouge */
 #fakeFlag {
     font-weight: bold;
     color: red;
 }
 
-/* Le vrai flag est invisible */
-#realFlag {
-    display: none;
-    color: green;
-}
-
-/* Bouton piégeux */
-#clickMe {
+/* Le bouton semble normal */
+#mysteryButton {
     background-color: blue;
     color: white;
     padding: 10px;
@@ -32,7 +26,7 @@ p.invisibleHint {
     font-size: 16px;
 }
 
-#clickMe:hover {
+#mysteryButton:hover {
     background-color: red;
     color: yellow;
 }
