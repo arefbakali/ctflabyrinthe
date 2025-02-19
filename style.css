@@ -16,14 +16,14 @@ body {
     color: red;
 }
 
-/* Le texte d'indice est invisible */
-.hiddenMessage {
-    color: black;
-    font-size: 12px;
+/* Compteur d'échecs */
+#failCount {
+    font-size: 18px;
+    color: yellow;
 }
 
-/* On le rend visible si le joueur survole */
-.hiddenMessage:hover {
-    color: white;
+/* Troll message */
+#trollMessage {
+    font-size: 20px;
+    color: red;
 }
-
