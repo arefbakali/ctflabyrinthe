@@ -1,4 +1,4 @@
-// 🔥 Bloque l'accès au code source et à la console
+// 🔥 Bloque l'accès au code source
 document.addEventListener("keydown", function(event) {
     if (event.key === "F12" || (event.ctrlKey && event.key === "u")) {
         event.preventDefault();
@@ -12,23 +12,21 @@ document.addEventListener("contextmenu", function(event) {
     alert("Non, non, non...");
 });
 
-// 🔥 Vérifie si l'utilisateur bouge la souris en cercle parfait
+// 🔥 Détection ultra précise d’un cercle
 let movementHistory = [];
-let precision = 0.97; // Seuil de précision (plus proche de 1 = plus dur)
-let lastX, lastY;
-let startTime;
+let precision = 0.98; // Seuil de précision élevé (rendu plus difficile)
+let startTime = null;
 
 document.addEventListener("mousemove", function(event) {
     if (!startTime) startTime = Date.now(); // Démarrer le timer au premier mouvement
 
     movementHistory.push({x: event.clientX, y: event.clientY});
-    
-    if (movementHistory.length > 30) {
-        movementHistory.shift(); // Garder uniquement les 30 derniers points pour analyser
+
+    if (movementHistory.length > 50) { // On garde les 50 derniers points
+        movementHistory.shift();
     }
 
-    // Vérifier si les mouvements forment un cercle
-    if (movementHistory.length === 30) {
+    if (movementHistory.length === 50) { // Vérification quand on a 50 points
         let centerX = movementHistory.reduce((sum, p) => sum + p.x, 0) / movementHistory.length;
         let centerY = movementHistory.reduce((sum, p) => sum + p.y, 0) / movementHistory.length;
         
@@ -39,24 +37,23 @@ document.addEventListener("mousemove", function(event) {
         let deviations = radii.map(r => Math.abs(r - avgRadius) / avgRadius);
         let avgDeviation = deviations.reduce((sum, d) => sum + d, 0) / deviations.length;
         
-        if (avgDeviation < (1 - precision)) { // Si le cercle est presque parfait
-            let duration = (Date.now() - startTime) / 1000;
-            
-            if (duration < 3) { // Si trop rapide, refuser
-                alert("Trop rapide ! Fais un cercle plus lentement.");
-                movementHistory = [];
-                startTime = null;
-            } else {
-                document.getElementById("realFlag").style.display = "block";
-                alert("Incroyable ! Tu as réussi un cercle parfait !");
-            }
+        let duration = (Date.now() - startTime) / 1000; // Temps en secondes
+
+        if (avgDeviation < (1 - precision) && duration > 3) { // Cercle parfait + minimum 3 secondes
+            document.getElementById("realFlag").style.display = "block";
+            alert("Incroyable ! Tu as réussi un cercle parfait !");
+        } else if (duration < 3) { // Trop rapide
+            alert("Trop rapide ! Fais un cercle plus lentement.");
+            movementHistory = [];
+            startTime = null;
         }
     }
 });
 
-// 🔥 Si l'utilisateur essaie de copier du texte, le flag disparaît
+// 🔥 Empêche la copie du flag
 document.addEventListener("copy", function(event) {
     alert("Tu as essayé de copier ? Mauvaise idée.");
     document.getElementById("realFlag").remove();
 });
+
 
